@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import HomePage from './pages/HomePage';
+import GamePage from './pages/Gamepage';
 import './App.css';
 
 function App() {
+  const [gameStarted, setGameStarted] = useState(false);
+  const [numPlayers, setNumPlayers] = useState(0);
+  const [players, setPlayers] = useState([]);
+
+  const startGame = () => {
+    const initialPlayers = Array.from({ length: numPlayers }, (_, i) => ({
+      name: `Player ${i + 1}`,
+      score: 0,
+    }));
+    setPlayers(initialPlayers);
+    setGameStarted(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {!gameStarted ? (
+        <HomePage 
+          numPlayers={numPlayers} 
+          setNumPlayers={setNumPlayers} 
+          startGame={startGame} 
+        />
+      ) : (
+        <GamePage players={players} setPlayers={setPlayers} />
+      )}
     </div>
   );
 }
