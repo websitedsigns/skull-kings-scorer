@@ -1,24 +1,33 @@
-// src/pages/HomePage.js
 import React from 'react';
 
-function HomePage({ numPlayers, setNumPlayers, startGame }) {
+const HomePage = ({ startGame, setNumPlayers, numPlayers }) => {
+
+  const handleNumPlayersChange = (e) => {
+    setNumPlayers(Number(e.target.value)); // Update numPlayers when the user selects a value
+  };
+
   return (
-    <div className="homepage">
-      <h1>Welcome to Skull Kings</h1>
-      <label>
-        Number of Players:
-        <input
-          type="number"
-          min="1"
-          value={numPlayers}
-          onChange={(e) => setNumPlayers(Number(e.target.value))}
-        />
-      </label>
-      <button onClick={startGame} disabled={numPlayers < 1}>
-        Start Game
-      </button>
+    <div className="home">
+      <h2>Skull Kings Game</h2>
+      <div className="player-selection">
+        <label htmlFor="num-players">Select Number of Players:</label>
+        <select 
+          id="num-players" 
+          value={numPlayers} 
+          onChange={handleNumPlayersChange} // Handle input change
+        >
+          <option value={2}>2 Players</option>
+          <option value={3}>3 Players</option>
+          <option value={4}>4 Players</option>
+          <option value={5}>5 Players</option>
+          <option value={6}>6 Players</option>
+          <option value={7}>7 Players</option>
+          <option value={8}>8 Players</option>
+        </select>
+      </div>
+      <button onClick={startGame}>Start Game</button>
     </div>
   );
-}
+};
 
 export default HomePage;

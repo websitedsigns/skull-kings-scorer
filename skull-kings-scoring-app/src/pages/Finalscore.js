@@ -1,9 +1,15 @@
+// src/pages/Finalscore.js
 import React from 'react';
 
-function FinalScore({ players }) {
+function Finalscore({ players }) {
+  const winner = players.reduce((prev, current) =>
+    prev.score > current.score ? prev : current
+  );
+
   return (
     <div className="finalscore">
-      <h2>Final Scores</h2>
+      <h2>Game Over</h2>
+      <h3>Winner: {winner.name} with {winner.score} points!</h3>
       <ul>
         {players.map((player, index) => (
           <li key={index}>
@@ -15,4 +21,4 @@ function FinalScore({ players }) {
   );
 }
 
-export default FinalScore;
+export default Finalscore;
