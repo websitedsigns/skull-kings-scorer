@@ -1,76 +1,43 @@
-/* General Styles with Background Image */
+/* General Styles */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Arial', Helvetica, sans-serif; /* Added fallback */
   margin: 0;
   padding: 0;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center; /* Vertical centering */
-  color: #333;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  overflow: hidden; /* Prevent scrolling when modal is active */
 }
 
-/* Background Container */
+/* Root Variables for Reusability */
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #f44336;
+  --modal-background: rgba(255, 255, 255, 0.95);
+  --text-color: #333;
+  --border-radius: 8px;
+  --box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Background */
 .background {
-  background-image: url('../public/assets/skullkinglogo.jpg'); /* Adjust path if necessary */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* Allow positioning of child elements above this */
-  pointer-events: none; /* Disables interactions with the background */
+  position: relative;
+  filter: blur(0); /* Default state */
+  transition: filter 0.3s ease;
 }
 
-/* Centralized App Container */
-.app {
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  max-width: 80%; /* Limits app width */
-  max-height: 90%; /* Limits app height */
-  overflow: auto; /* Ensures scroll if content overflows */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative; /* Make sure it stays on top */
-  z-index: 10; /* Higher z-index to bring it in front */
-  pointer-events: auto; /* Ensures the app is interactive */
-}
-
-/* Buttons */
-.button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.button:hover {
-  transform: scale(1.1);
-}
-
-.close-btn {
-  background-color: #f44336;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-  transition: transform 0.2s ease;
-}
-
-.close-btn:hover {
-  background-color: #e53935;
+.modal-active .background {
+  filter: blur(5px) brightness(0.7); /* Blur and dim background when modal is active */
 }
 
 /* Modal Styles */
@@ -79,238 +46,87 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  background-color: #4caf50;/* Solid background for text visibility */
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  z-index: 1000;
   width: 90%;
-  z-index: 1000; /* Ensure modal stays above everything */
-  animation: fadeIn 0.5s ease forwards;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Spacing between content */
+  text-align: center;
+}
+
+/* Modal Content Block Styling */
+.modal .content-block {
+  background-color: white; /* Solid background for text */
+  padding: 15px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  color: var(--text-color);
+  text-align: left; /* Align text inside the block */
 }
 
 .modal h2 {
-  margin-top: 0;
-  text-align: center;
-  font-size: 1.8rem;
-}
-
-.round-section {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 15px;
-}
-
-.round-section:last-child {
-  border-bottom: none;
-}
-
-.player-section {
-  margin-bottom: 10px;
-}
-
-.player-section h4 {
   margin: 0;
-  font-size: 1.2rem;
-  color: #333;
+  font-size: 1.8rem;
+  color: var(--text-color);
 }
 
-.player-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 0;
-  font-size: 0.9rem;
-}
-
-.player-details div {
-  padding: 0 5px;
-}
-
-.player-scores {
-  margin-top: 5px;
+.modal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: white;
   font-size: 1rem;
-  font-weight: bold;
-}
-
-/* Dropdown Styling */
-select {
   cursor: pointer;
-  background-color: #fff;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  transition: transform 0.2s ease;
 }
 
-select:hover {
-  border-color: #4caf50;
+.modal button:hover {
+  transform: scale(1.05);
 }
 
-/* Player Input */
-.player-input {
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-  transition: box-shadow 0.2s ease;
-  max-width: 400px;
+.modal .close-btn {
+  background-color: var(--secondary-color);
 }
 
-.player-input:hover {
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+.modal .close-btn:hover {
+  background-color: #e53935;
 }
 
-.player-input h3 {
-  margin-top: 0;
-}
-
-.player-input label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-.player-input input,
-.player-input select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.player-input button {
-  margin-top: 10px;
-  width: 100%;
-}
-
-/* Animations */
+/* Animation */
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
   }
 }
 
 .modal {
-  animation: fadeIn 0.5s ease forwards;
-}
-
-@keyframes buttonScale {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Character Animations */
-
-/* Mermaid animation */
-@keyframes mermaidAttack {
-  0% {
-    transform: translate(-50%, -150%) scale(0.5);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 0;
-  }
-}
-
-.mermaid {
-  background-image: url('../public/assets/mermaid-image.png'); /* Adjust to actual image path */
-  background-size: cover;
-  background-position: center;
-  animation: mermaidAttack 2s forwards;
-  position: absolute; /* Ensure it floats above everything else */
-  z-index: 20;
-}
-
-/* Pirate animation */
-@keyframes pirateAttack {
-  0% {
-    transform: translate(-50%, -150%) rotate(30deg) scale(0.5);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(0deg) scale(1.5);
-    opacity: 0;
-  }
-}
-
-.pirate {
-  background-image: url('../public/assets/pirate-image.png'); /* Adjust to actual image path */
-  background-size: cover;
-  background-position: center;
-  animation: pirateAttack 2s forwards;
-  position: absolute; /* Ensure it floats above everything else */
-  z-index: 20;
-}
-
-/* Skull King animation */
-@keyframes skullKingAttack {
-  0% {
-    transform: translate(-50%, -150%) scale(0.5);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 0;
-  }
-}
-
-.skullKing {
-  background-image: url('../public/assets/skullKing-image.png'); /* Adjust to actual image path */
-  background-size: cover;
-  background-position: center;
-  animation: skullKingAttack 2s forwards;
-  position: absolute; /* Ensure it floats above everything else */
-  z-index: 20;
-}
-
-/* Skull animation */
-@keyframes skullAttack {
-  0% {
-    transform: translate(-50%, -150%) scale(0.5);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(2);
-    opacity: 0;
-  }
-}
-
-.skull {
-  background-image: url('../public/assets/skull-image.png'); /* Adjust to actual image path */
-  background-size: cover;
-  background-position: center;
-  animation: skullAttack 2s forwards;
-  position: absolute; /* Ensure it floats above everything else */
-  z-index: 20;
+  animation: fadeIn 0.5s ease;
 }
 
 /* Responsiveness */
 @media screen and (max-width: 600px) {
-  .player-details {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .player-details div {
-    margin-bottom: 5px;
-  }
-
-  .app {
-    padding: 10px;
-  }
-
   .modal {
-    width: 90%;
-    padding: 15px;
+    width: 95%;
+    padding: 20px;
+  }
+
+  .modal h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal button {
+    font-size: 0.9rem;
   }
 }
