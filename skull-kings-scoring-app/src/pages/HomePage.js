@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../src/App.css';
+import '../index.css'; // Import the CSS for modern styling
 
 const HomePage = ({ startGame, setNumPlayers, numPlayers }) => {
 

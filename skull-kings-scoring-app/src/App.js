@@ -32,28 +32,29 @@ function App() {
   const triggerCharacterAnimation = () => {
     const animations = ['mermaid', 'pirate', 'skullKing', 'skull'];
     const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
-    setAnimationClass(randomAnimation); // Apply a random animation class
+    setAnimationClass(randomAnimation); // Set a random animation for character
+    console.log('Animation triggered: ', randomAnimation);
   };
 
-  const renderPage = () => {
-    if (gameStarted) {
-      return <GamePage players={players} setPlayers={setPlayers} />;
-    } else {
-      return (
-        <HomePage
-          startGame={startGame}
-          setNumPlayers={setNumPlayers}
-          numPlayers={numPlayers}
-        />
-      );
-    }
-  };
+  // Debugging outputs
+  console.log('Game Started:', gameStarted);
+  console.log('Players:', players);
 
   return (
-    <div className={`App ${animationClass}`}>
-      <header className="App-header">
-        {renderPage()}
-      </header>
+    <div className="background"> {/* Background container */}
+      <div className={`app ${animationClass}`}> {/* App content */}
+        {/* Character Animation */}
+        {animationClass && <div className={`character ${animationClass}`}></div>} {/* Show character animation */}
+
+        {/* Conditional Rendering of Pages */}
+        {!gameStarted ? (
+          <HomePage startGame={startGame} setNumPlayers={setNumPlayers} numPlayers={numPlayers} />
+        ) : (
+          <>
+            <GamePage players={players} setPlayers={setPlayers} />
+          </>
+        )}
+      </div>
     </div>
   );
 }

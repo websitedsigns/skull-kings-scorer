@@ -1,0 +1,92 @@
+.gamepage {
+    padding: 20px;
+    background-image: url('/assets/piratebackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Ensure full page height */
+    color: #fff;
+    font-family: 'Pirata One', cursive; /* Pirate-themed font */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for pirate feel */
+}
+
+h2, h3, h4, h5 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ddb347; /* Golden color for pirate theme */
+}
+
+.round-scores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.score-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    color: #554433; /* Dark wood-like text */
+}
+
+.score-card h4, .score-card h5 {
+    margin-bottom: 10px;
+    color: #ddb347; /* Gold for headings */
+}
+
+.score-card p {
+    margin: 5px 0;
+    color: #f0e68c; /* Golden text for details */
+}
+
+.round-scores-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: #ddb347;
+}
+
+.round-scores-table th, .round-scores-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.round-scores-table th {
+    background-color: #f4f4f4;
+    color: #554433; /* Darker tone for table headers */
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-content .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.popup-content .score {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    color: #554433; /* Dark wood-like text */
+}
+
+.popup-content .score p {
+    margin: 5px 0;
+    color: #f0e68c; /* Golden text */
+}
+
+.header {
+    color: #fff;
+    font-family: 'Pirata One', cursive; /* Pirate-themed font */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for pirate feel */
+}

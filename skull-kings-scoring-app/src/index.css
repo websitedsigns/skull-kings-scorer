@@ -67,11 +67,8 @@ h2, h3, h4, h5 {
 .popup-content .score p {
   margin: 5px 0;
 }
-
 .header {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1ebfe3; /* Lighter color for better readability */
-  text-align: center;
-  margin-bottom: 20px;
+color: #fff;
+font-family: 'Pirata One', cursive; /* Pirate-themed font */
+background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for pirate feel */
 }

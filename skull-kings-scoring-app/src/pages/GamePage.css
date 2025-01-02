@@ -1,75 +1,79 @@
 .gamepage {
-    font-family: "Pirata One", cursive;
-    padding: 20px;
-    background-size: cover;
     background-position: center;
-    border-radius: 8px;
-  }
-  
-  h2,
-  h3,
-  h4 {
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .input-group {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh; /* Ensure the full page height is covered by the background */
+    color: white;
+    font-family: 'Pirata One', cursive; /* Pirate-themed font */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay to enhance the pirate theme */
+}
+
+h2, h3, h4 {
     margin-bottom: 15px;
-  }
-  
-  .modern-select,
-  .modern-input,
-  .modern-button {
+    color: #f0e68c; /* Golden color for pirate theme */
+    font-family: 'Pirata One', cursive;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.modern-select,
+.modern-input,
+.modern-button {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #aaa; /* Weathered wood effect */
+    padding: 12px;
+    border: 1px solid #dda15e; /* Weathered wood effect */
     border-radius: 4px;
     font-size: 16px;
-    background-color: #f0e4d7; /* Weathered parchment color */
-    margin-top: 5px;
-  }
-  
-  .modern-button {
+    background-color: #3a3a3a; /* Darker background to mimic pirate hold */
+    margin-top: 8px;
+}
+
+.modern-button {
     background-color: #e7ad25; /* Gold accent for buttons */
-    color: white;
+    color: #fff;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
-  }
-  
-  .modern-button:hover {
+    font-family: 'Pirata One', cursive;
+}
+
+.modern-button:hover {
     background-color: #d4a017; /* Darker gold for hover */
-  }
-  
-  .popup {
+}
+
+.popup {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
-  }
-  
-  .popup-content {
+    background-color: rgba(0, 0, 0, 0.9); /* Darker overlay */
+}
+
+.popup-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff7dc; /* Antique white */
+    background-color: #4b4239; /* Dark wood background */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  }
-  
-  .header {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.header {
     font-size: 24px;
     font-weight: bold;
-    color: #5d4037; /* Dark wood color */
+    color: #ddb347; /* Golden pirate color */
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .close-btn {
+    font-family: 'Pirata One', cursive;
+}
+
+.close-btn {
     background: none;
     border: none;
     color: #d9534f; /* Pirate red */
@@ -78,27 +82,27 @@
     top: 10px;
     right: 10px;
     font-size: 20px;
-  }
-  
-  .close-btn:hover {
+}
+
+.close-btn:hover {
     color: #c9302c; /* Darker pirate red */
-  }
-  
-  .score-grid {
+}
+
+.score-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-  }
-  
-  .round {
+    gap: 20px;
+}
+
+.round {
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-  }
-  
-  .score {
-    background: #f4efe1; /* Parchment background */
+    padding-bottom: 15px;
+}
+
+.score {
+    background: #554433; /* Dark wood background */
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
+    color: #f0e68c; /* Golden text */
+}

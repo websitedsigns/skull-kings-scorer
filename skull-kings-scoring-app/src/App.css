@@ -1,12 +1,13 @@
 /* HomePage.css */
 
 .homepage {
-  font-family: "Pirata One", cursive;
-  padding: 20px;
-  background-image: url('../../public/assets/piratebackground.jpg');
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
+  background-repeat: no-repeat;
+  height: 100vh; /* Ensure the full page height is covered by the background */
+  color: #fff;
+  font-family: 'Pirata One', cursive; /* Pirate-themed font */
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for pirate feel */
 }
 
 h2,
