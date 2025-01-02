@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import HomePage from './pages/HomePage';
 import GamePage from './pages/GamePage';
-import Scoreboard from './pages/Scoreboard';
 import './App.css';
 
 // Function to generate players dynamically
@@ -33,30 +32,28 @@ function App() {
   const triggerCharacterAnimation = () => {
     const animations = ['mermaid', 'pirate', 'skullKing', 'skull'];
     const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
-    setAnimationClass(randomAnimation); // Set a random animation for character
-    console.log('Animation triggered: ', randomAnimation);
+    setAnimationClass(randomAnimation); // Apply a random animation class
   };
 
-  // Debugging outputs
-  console.log('Game Started:', gameStarted);
-  console.log('Players:', players);
+  const renderPage = () => {
+    if (gameStarted) {
+      return <GamePage players={players} setPlayers={setPlayers} />;
+    } else {
+      return (
+        <HomePage
+          startGame={startGame}
+          setNumPlayers={setNumPlayers}
+          numPlayers={numPlayers}
+        />
+      );
+    }
+  };
 
   return (
-    <div className="background"> {/* Background container */}
-      <div className={`app ${animationClass}`}> {/* App content */}
-        {/* Character Animation */}
-        {animationClass && <div className={`character ${animationClass}`}></div>} {/* Show character animation */}
-
-        {/* Conditional Rendering of Pages */}
-        {!gameStarted ? (
-          <HomePage startGame={startGame} setNumPlayers={setNumPlayers} numPlayers={numPlayers} />
-        ) : (
-          <>
-            <GamePage players={players} setPlayers={setPlayers} />
-            <Scoreboard players={players} />
-          </>
-        )}
-      </div>
+    <div className={`App ${animationClass}`}>
+      <header className="App-header">
+        {renderPage()}
+      </header>
     </div>
   );
 }

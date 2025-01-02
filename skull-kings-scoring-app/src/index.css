@@ -1,0 +1,77 @@
+.gamepage {
+  padding: 20px;
+}
+
+h2, h3, h4, h5 {
+  text-align: center;
+}
+
+.round-scores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.score-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.score-card h4, .score-card h5 {
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  margin: 5px 0;
+}
+
+.round-scores-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.round-scores-table th, .round-scores-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.round-scores-table th {
+  background-color: #f4f4f4;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-content .score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.popup-content .score {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.popup-content .score p {
+  margin: 5px 0;
+}
+
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1ebfe3; /* Lighter color for better readability */
+  text-align: center;
+  margin-bottom: 20px;
+}
