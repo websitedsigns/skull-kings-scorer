@@ -23,7 +23,7 @@ body {
 
 /* Background */
 .background {
-  background-size: cover;
+  background-image: url('/assets/pirate-image.png'); /* Corrected syntax */  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
